@@ -15,6 +15,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ADD grafana.conf /etc/apache2/sites-available/grafana.conf
+ADD influxdb.conf /etc/apache2/conf-enabled/influxdb.conf
 ADD config.js /var/www/html/grafana/config.js
 
 ADD run.sh /run.sh

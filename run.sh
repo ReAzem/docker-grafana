@@ -1,3 +1,4 @@
 #!/bin/bash
+source /etc/apache2/envvars
 chown www-data:www-data /var/www -R
-exec apache2ctl -e debug -DFOREGROUND >> /var/log/apache.log 2>&1
+exec apache2ctl -DFOREGROUND
