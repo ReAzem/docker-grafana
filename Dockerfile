@@ -18,6 +18,13 @@ ADD grafana.conf /etc/apache2/sites-available/grafana.conf
 ADD influxdb.conf /etc/apache2/conf-enabled/influxdb.conf
 ADD config.js /var/www/html/grafana/config.js
 
+ENV INFLUXDB_HOST influxdb
+ENV INFLUXDB_PORT 8086
+ENV INFLUXDB_NAME db
+ENV INFLUXDB_GRAFANADB grafana
+ENV INFLUXDB_USER root
+ENV INFLUXDB_PASS root
+
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
 

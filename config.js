@@ -8,16 +8,16 @@ function (Settings) {
     datasources: {
       influxdb: {
         type: 'influxdb',
-        url: "/influxdb/db/db",
-        username: 'root',
-        password: 'root',
+        url: "/influxdb/db/<--DB_NAME-->",
+        username: '<--USER-->',
+        password: '<--PASS-->',
     default: true
       },
       grafana: {
         type: 'influxdb',
-        url: "/influxdb/db/grafana",
-        username: 'root',
-        password: 'root',
+        url: "/influxdb/db/<--GRAFANADB-->",
+        username: '<--USER-->',
+        password: '<--PASS-->',
         grafanaDB: true
       },
     },
