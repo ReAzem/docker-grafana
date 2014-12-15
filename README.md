@@ -1,13 +1,11 @@
 # docker-grafana
 
-Docker image for grafana. Configured for influxdb.
+Docker image for grafana. Configured for InfluxDB.
 
-# Dependencies
-- This container has to be linked with an influxdb container with the alias influxdb
-- The influxdb database must have ```db``` and ```grafana``` databases
-- There has to be an influxdb user with username ```root``` and password ```root```
-
-# Todo
-- Make the influxdb username/password configurable
-- Make the influxdb databases configurable
-- Make the influxdb hostname configurable
+# Environment variables
+- ```INFLUXDB_HOST```: InfluxDB hostname
+- ```INFLUXDB_PORT```: InfluxDB port
+- ```INFLUXDB_NAME```:  InfluxDB database name
+- ```INFLUXDB_GRAFANADB```: InfluxDB database to use as as grafanadb
+- ```INFLUXDB_USER```: InfluxDB username
+- ```INFLUXDB_PASS```: InfluxDB password
