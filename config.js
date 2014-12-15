@@ -1,20 +1,43 @@
 define(['settings'],
 function (Settings) {
+
+
   return new Settings({
+
+    // datasources, you can add multiple
     datasources: {
-      influx: {
-        default: true,
-        grafanaDB: true,
+      influxdb: {
         type: 'influxdb',
         url: "/influxdb/db/db",
-        username: "root",
-        password: "root",
-      }
+        username: 'root',
+        password: 'root',
+    default: true
+      },
+      grafana: {
+        type: 'influxdb',
+        url: "/influxdb/db/grafana",
+        username: 'root',
+        password: 'root',
+        grafanaDB: true
+      },
     },
+
+    // default start dashboard
     default_route: '/dashboard/file/default.json',
-    timezoneOffset: null,
-    grafana_index: "grafana-dash",
+
+    // set to false to disable unsaved changes warning
     unsaved_changes_warning: true,
-    panel_names: ['text','graphite']
+
+    // set the default timespan for the playlist feature
+    // Example: "1m", "1h"
+    playlist_timespan: "1m",
+
+    // Add your own custom pannels
+    plugins: {
+      panels: []
+    }
+
   });
 });
+
+
