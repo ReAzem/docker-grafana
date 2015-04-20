@@ -12,6 +12,6 @@ function create_db {
 
 }
 
-(sleep 30 && create_db)&
+(sleep 60 && create_db)&
 
  ./bin/grafana-server -config="/grafana.ini"
