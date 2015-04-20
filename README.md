@@ -1,10 +1,8 @@
 # docker-grafana
 
-Docker image for grafana. Configured for InfluxDB.
+Docker image for grafana 2.0+. Configured for InfluxDB.
 
-Grafana is served with apache2.
-
-Grafana queries are made like this: ```browser -> container (apache2 ProxyPass) -> influxdb```. This allows for easy container linking.
+Data Sources are pre-created in Grafana.
 
 For example, with fig:
 ```yaml
@@ -23,7 +21,6 @@ grafana:
     INFLUXDB_HOST: "influxdb"
     INFLUXDB_PORT: "8086"
     INFLUXDB_NAME: "db"
-    INFLUXDB_GRAFANADB: "grafana"
     INFLUXDB_USER: "root"
     INFLUXDB_PASS: "root"
 ```
@@ -32,6 +29,5 @@ grafana:
 - ```INFLUXDB_HOST```: InfluxDB hostname
 - ```INFLUXDB_PORT```: InfluxDB port
 - ```INFLUXDB_NAME```:  InfluxDB database name
-- ```INFLUXDB_GRAFANADB```: InfluxDB database to use as as grafanadb
 - ```INFLUXDB_USER```: InfluxDB username
 - ```INFLUXDB_PASS```: InfluxDB password
