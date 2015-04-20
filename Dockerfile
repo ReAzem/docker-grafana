@@ -1,22 +1,14 @@
 FROM debian:jessie
 MAINTAINER Alexandre Viau <alexandre@alexandreviau.net>
 
-ENV GRAFANA_VERSION 1.9.0
+ENV GRAFANA_VERSION 2.0.1
 
 RUN apt-get update && \
-    apt-get install -y wget libapache2-mod-proxy-html apache2 && \
-    a2enmod proxy_http && \
-    wget http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz -O grafana.tar.gz && \
-    tar zxf grafana.tar.gz && \
-    rm grafana.tar.gz && \
-    mv grafana-${GRAFANA_VERSION} /var/www/html/grafana && \
-    apt-get autoremove -y wget && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y wget adduser libfontconfig && \
+    wget https://grafanarel.s3.amazonaws.com/builds/grafana-${GRAFANA_VERSION}.linux-x64.tar.gz -O grafana.tar.gz && \
+    tar zxf grafana.tar.gz
 
-ADD grafana.conf /etc/apache2/sites-available/grafana.conf
-ADD influxdb.conf /etc/apache2/conf-enabled/influxdb.conf
-ADD config.js /var/www/html/grafana/config.js
+ADD /grafana.ini grafana.ini
 
 ENV INFLUXDB_HOST influxdb
 ENV INFLUXDB_PORT 8086
