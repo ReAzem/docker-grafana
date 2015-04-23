@@ -4,7 +4,7 @@ Docker image for grafana 2.0+. Configured for InfluxDB.
 
 Data Sources are pre-created in Grafana.
 
-For example, with fig:
+For example, with docker-compose:
 ```yaml
 influxdb:
   image: tutum/influxdb
