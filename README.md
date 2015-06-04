@@ -1,33 +1,14 @@
 # docker-grafana
 
-Docker image for grafana 2.0+. Configured for InfluxDB.
+Docker image for grafana 2.0+. Configured for Bansho.
 
-Data Sources are pre-created in Grafana.
+This is a container for Surveil.
 
-For example, with docker-compose:
-```yaml
-influxdb:
-  image: tutum/influxdb
-  environment:
-    PRE_CREATE_DB: "db;grafana"
-
-grafana:
-  image: savoirfairelinux/grafana
-  ports:
-    - "80:80"
-  links:
-    - influxdb
-  environment:
-    INFLUXDB_HOST: "influxdb"
-    INFLUXDB_PORT: "8086"
-    INFLUXDB_NAME: "db"
-    INFLUXDB_USER: "root"
-    INFLUXDB_PASS: "root"
-```
+For example, with docker-compose refer to [Surveil]:
 
 # Environment variables
-- ```INFLUXDB_HOST```: InfluxDB hostname
-- ```INFLUXDB_PORT```: InfluxDB port
-- ```INFLUXDB_NAME```:  InfluxDB database name
-- ```INFLUXDB_USER```: InfluxDB username
-- ```INFLUXDB_PASS```: InfluxDB password
+- ```GRAFANA_ROOT_URL```: Grafana root url
+- ```GRAFANA_AUTH_PROXY_ENABLED```: If auth proxy enabled
+- ```GRAFANA_AUTH_PROXY_HEADER_NAME```: Name of header
+
+[Surveil]: https://github.com/stackforge/surveil
