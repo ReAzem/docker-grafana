@@ -2,19 +2,15 @@
 
 cd grafana-${GRAFANA_VERSION}
 
+function setup_grafana {
+    sed -i "s|<-- GRAFANA_ROOT_URL -->|${GRAFANA_ROOT_URL}|" /grafana.ini
+    sed -i "s|<-- GRAFANA_AUTH_PROXY_ENABLED -->|${GRAFANA_AUTH_PROXY_ENABLED}|" /grafana.ini
+    sed -i "s|<-- GRAFANA_AUTH_PROXY_HEADER_NAME -->|${GRAFANA_AUTH_PROXY_HEADER_NAME}|" /grafana.ini
 
-function create_db {
-    curl --cookie-jar /tmp/cookiefile 'http://localhost/login' -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"user":"admin","email":"","password":"admin"}'
-
-    curl --cookie /tmp/cookiefile 'http://localhost/api/datasources' -X PUT -H 'Content-Type: application/json;charset=utf-8' --data '{"name":"influxdb","type":"influxdb","url":"http://'${INFLUXDB_HOST}':'${INFLUXDB_PORT}'","access":"proxy","isDefault":true,"database":"'${INFLUXDB_NAME}'","user":"'${INFLUXDB_USER}'","password":"'${INFLUXDB_PASS}'"}'
-
-    echo -e "Created InfluxDB datasources."
+    echo -e "Grafana configured."
 }
 
-if [ -f "/.pre_db_created" ]; then
-    echo "=> Data sources had been created before, skipping ..."
-else
-    (sleep 60 && create_db && touch "/.pre_db_created")&
-fi
+setup_grafana
 
- ./bin/grafana-server -config="/grafana.ini"
+./bin/grafana-server -config="/grafana.ini"
+
