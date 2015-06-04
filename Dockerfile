@@ -10,12 +10,6 @@ RUN apt-get update && \
 
 ADD /grafana.ini grafana.ini
 
-ENV INFLUXDB_HOST influxdb
-ENV INFLUXDB_PORT 8086
-ENV INFLUXDB_NAME db
-ENV INFLUXDB_USER root
-ENV INFLUXDB_PASS root
-
 ENV GRAFANA_ROOT_URL %(protocol)s://%(domain)s:%(http_port)s/
 ENV GRAFANA_AUTH_PROXY_ENABLED false
 ENV GRAFANA_AUTH_PROXY_HEADER_NAME X-WEBAUTH-USER
