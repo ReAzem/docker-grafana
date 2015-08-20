@@ -1,7 +1,7 @@
 FROM debian:jessie
 MAINTAINER Alexandre Viau <alexandre@alexandreviau.net>
 
-ENV GRAFANA_VERSION 2.1.0
+ENV GRAFANA_VERSION 2.1.2
 
 RUN apt-get update && \
     apt-get install -y wget curl && \
